@@ -1,7 +1,124 @@
 ---
-title: "Post With Code"
+title: "Generating data for simulation studies"
 author: "Tony Henry Oduor"
 date: "2023-11-04"
 categories: [news, code, analysis]
-
+image: "simulationpng.png"
+execute: 
+  warning: false
+title-block-banner: true
 ---
+
+# Introduction 
+
+Simulation studies are a powerful tool in various fields, including statistics, engineering, and computer science. They involve the creation of virtual experiments to model real-world phenomena. By mimicking complex systems through computational algorithms, researchers can gain valuable insights into the behavior and performance of these systems under different conditions. Simulation studies enable the exploration of scenarios that might be impractical or costly to conduct in a physical setting. This method provides a controlled environment to test hypotheses, evaluate the effectiveness of different strategies, and assess the robustness of models. Through the analysis of simulated data, researchers can make informed decisions, refine their models, and ultimately enhance our understanding of intricate, dynamic processes in a wide range of disciplines.
+
+```{r}
+
+#Loading Libraries
+libs<-c("stringr","haven","readxl","splitstackshape","dplyr","tidyr","foreign","data.table","ggplot2",
+        "pwr","pacman","flextable")
+for (lib in libs) {
+  if(!require(lib,character.only = T)) {
+    install.packages(lib,dependencies = T) }
+  #update.packages(lib)
+  library(lib,character.only = T) }
+
+```
+
+# Example 1 - Randomization
+
+In this illustration, we create a function called "assign_recipients" designed for allocating participants to specific Study arms. This scenario is particularly applicable in clinical trial studies where participants are randomly assigned to various treatment groups. In our instance, participants are randomized into three distinct arms: A, B, and C. The function provides researchers the flexibility to specify the allocation proportions for each study arm. Additionally, it ensures that the total distribution sums up to 100%.
+
+
+```{r}
+#Clearing environment
+rm(list = ls())
+
+#Beginning of function
+assign_recipients <- function(namelist,distribution)
+  { 
+  
+  N <-length(namelist)
+  lisnm<-data.frame(namelist)
+  
+  if(sum(distribution)==1)
+    {
+  list<-c(rep("A",round(distribution[1]*N)),rep("B",round(distribution[2]*N)),rep("C",round(distribution[3]*N)))
+  
+  if(N%%2==1)
+    {
+    
+    lisnm$Config<-sample(x=list,size=N)
+    } 
+  else 
+    {
+      lisnm$Config<-sample(x=list,size=N,replace = TRUE)
+    }
+  
+   print(lisnm)
+   
+  }
+  else {
+    
+    print("Check distribution: Not summing up to 1")
+    
+  }
+}
+
+#End of function
+
+```
+
+# Function Performance
+
+We assess the function's performance by providing varied names and distributing them with a breakdown of 20% for arm A, 30% for arm B, and 50% for arm C.
+```{r}
+#######Test cases
+#Setting seed 
+set.seed(202201)
+
+#Test names
+names<-c("Mathew","Ian","Magdaline","Rose","Bella","Rahima","Michael","Mark",
+         "Violet","Margaret","John","Milly","Ken")
+
+#Target distribution
+target_distribution <-c(.20,.30,.50)
+
+#Output assignment
+assign_recipients(names,target_distribution)
+```
+
+
+# Example 2 - Linear model
+
+In the second example, our aim is to create a dataset of 1000 data points for the dependent variable, x, within the range of 1 to 2. Subsequently, we will compute corresponding values for the independent variable, y, and generate a graphical representation of the relationship between y and x.
+
+```{r}
+
+
+#Number samples
+n<-1000
+
+#Setting up simulation data
+data<-data.frame(no=1:n,x=NA)
+
+for (i in 1:n) {
+  
+  #Generating x values
+data$x[i]<-runif(n,min = 1,max = 2)
+
+  #Generating y values
+data$y[i]<-2 +(-0.95)*data$x[i]+rnorm(1,sd=0.5)
+
+}
+
+
+#Plot of simulation data
+ggplot(data,aes(x=x,y=y)) + geom_point(color="steelblue") + 
+  labs(title = "Plot of simulation data",x= "x values",y ="y values") +
+  theme(axis.title=element_text(size=15),
+plot.title = element_text(hjust = 0.5),axis.text = element_text(size=15))
+
+```
+
