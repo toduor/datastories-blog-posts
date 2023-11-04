@@ -4,6 +4,9 @@ project:
 
 website:
   title: "data-stories"
+  comments: 
+    utterances: 
+       repo: toduor/datastories-blog-posts
   navbar:
     right:
       - about.qmd
