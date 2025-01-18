@@ -2,7 +2,7 @@
 title: "About"
 image: Toduor.jpg
 about:
-  template: trestles
+  template: solana
   links:
     - icon: twitter
       text: Twitter
@@ -16,15 +16,49 @@ about:
 
 ---
 
-## Bio
+## Professional Profile
+With nine years of experience in data management, data analysis, and data pipeline development, I specialize in supporting international development, market research, and public health initiatives. My focus areas include communicable and non-communicable diseases, leveraging my expertise in programming and research contexts.
 
-My name is Tony Henry Oduor, I hail from the beautiful landscapes of Kenya, East Africa.
+I have extensive experience in database management (e.g., MySQL), electronic data capture (EDC) tools, and advanced data processing using R, SAS, SPSS, and STATA. My skills also include creating dynamic visualizations through tools like RShiny, Power BI, and Tableau. I excel in statistical modeling, scientific publishing, and maintaining strict adherence to data privacy standards, including GDPR compliance.
 
-I have a wealth of experience managing and analysing healthcare data for decision-making.
+Additionally, I am skilled in developing documentation, implementation guides, and training modules to ensure the efficient use of data systems and tools.
 
-I'm passionate about reproducible research, automating data products, statistical computing, and data visualization.
 
 ## Education
+-   **MSc Statistics and Data Science (Biostatistics)** - [University of Hasselt, Belgium](https://www.uhasselt.be/en)
+-   **BSc Applied Statistics with Computing** - [University of Eldoret, Kenya](https://www.uoeld.ac.ke/)
 
--   **MSc. Statistics and Data Science: Biostatistics** - [Hasselt University](https://www.uhasselt.be/en)
--   **BSc. Applied Statistics with Computing** - [University of Eldoret](https://www.uoeld.ac.ke/)
+## Research Portfolio
+-  **HIV and STIs:** Acute HIV Infection (AHI), PrEP uptake, HIV incidence, testing, and adherence.
+-  **Malaria:** Research on malaria in pregnancy, severe malaria, and K-13 mutations.
+-  **Neglected Tropical Diseases:** Schistosomiasis and soil-transmitted helminthiases (STH).
+-  **Covid-19:** Knowledge Attitude and Practice (KAP),Epidemiological analysis.
+
+
+## Programming and Data Analysis Tools
+-	 R, STATA, SAS, SPSS
+-	 SQL (MySQL, Neo4J)
+
+## Visualization and Reporting
+-	 Tableau, Power BI, RShiny
+
+## Electronic Data Capture (EDC) Tools
+-	 RedCap, Kobo Toolbox, Survey CTO, ODK Collect 
+
+## Other Tools
+-	 Trifacta, QDS, MS Office Suite
+
+## Core Expertise
+-	 Research Data Management
+-	 CDISC-SDTM Data Standards
+-	 Data Cleaning and Quality Assurance
+-	 Statistical Modeling and Analysis
+-	 Data Pipeline Development and Automation
+-	 Clinical Trials (All Phases)
+-	 Data Governance and GDPR Compliance
+-	 Project Management and SOP Development
+-	 Scientific Publishing and Research Dissemination
+
+
+
+

@@ -4,7 +4,63 @@
     "href": "about.html",
     "title": "About",
     "section": "",
-    "text": "My name is Tony Henry Oduor, I hail from the beautiful landscapes of Kenya, East Africa.\nI have a wealth of experience managing and analysing healthcare data for decision-making.\nI’m passionate about reproducible research, automating data products, statistical computing, and data visualization."
+    "text": "With nine years of experience in data management, data analysis, and data pipeline development, I specialize in supporting international development, market research, and public health initiatives. My focus areas include communicable and non-communicable diseases, leveraging my expertise in programming and research contexts.\nI have extensive experience in database management (e.g., MySQL), electronic data capture (EDC) tools, and advanced data processing using R, SAS, SPSS, and STATA. My skills also include creating dynamic visualizations through tools like RShiny, Power BI, and Tableau. I excel in statistical modeling, scientific publishing, and maintaining strict adherence to data privacy standards, including GDPR compliance.\nAdditionally, I am skilled in developing documentation, implementation guides, and training modules to ensure the efficient use of data systems and tools."
+  },
+  {
+    "objectID": "about.html#professional-profile",
+    "href": "about.html#professional-profile",
+    "title": "About",
+    "section": "",
+    "text": "With nine years of experience in data management, data analysis, and data pipeline development, I specialize in supporting international development, market research, and public health initiatives. My focus areas include communicable and non-communicable diseases, leveraging my expertise in programming and research contexts.\nI have extensive experience in database management (e.g., MySQL), electronic data capture (EDC) tools, and advanced data processing using R, SAS, SPSS, and STATA. My skills also include creating dynamic visualizations through tools like RShiny, Power BI, and Tableau. I excel in statistical modeling, scientific publishing, and maintaining strict adherence to data privacy standards, including GDPR compliance.\nAdditionally, I am skilled in developing documentation, implementation guides, and training modules to ensure the efficient use of data systems and tools."
+  },
+  {
+    "objectID": "about.html#education",
+    "href": "about.html#education",
+    "title": "About",
+    "section": "Education",
+    "text": "Education\n\nMSc Statistics and Data Science (Biostatistics) - University of Hasselt, Belgium\nBSc Applied Statistics with Computing - University of Eldoret, Kenya"
+  },
+  {
+    "objectID": "about.html#research-portfolio",
+    "href": "about.html#research-portfolio",
+    "title": "About",
+    "section": "Research Portfolio",
+    "text": "Research Portfolio\n\nHIV and STIs: Acute HIV Infection (AHI), PrEP uptake, HIV incidence, testing, and adherence.\nMalaria: Research on malaria in pregnancy, severe malaria, and K-13 mutations.\nNeglected Tropical Diseases: Schistosomiasis and soil-transmitted helminthiases (STH).\nCovid-19: Knowledge Attitude and Practice (KAP),Epidemiological analysis."
+  },
+  {
+    "objectID": "about.html#programming-and-data-analysis-tools",
+    "href": "about.html#programming-and-data-analysis-tools",
+    "title": "About",
+    "section": "Programming and Data Analysis Tools",
+    "text": "Programming and Data Analysis Tools\n\nR, STATA, SAS, SPSS\nSQL (MySQL, Neo4J)"
+  },
+  {
+    "objectID": "about.html#visualization-and-reporting",
+    "href": "about.html#visualization-and-reporting",
+    "title": "About",
+    "section": "Visualization and Reporting",
+    "text": "Visualization and Reporting\n\nTableau, Power BI, RShiny"
+  },
+  {
+    "objectID": "about.html#electronic-data-capture-edc-tools",
+    "href": "about.html#electronic-data-capture-edc-tools",
+    "title": "About",
+    "section": "Electronic Data Capture (EDC) Tools",
+    "text": "Electronic Data Capture (EDC) Tools\n\nRedCap, Kobo Toolbox, Survey CTO, ODK Collect"
+  },
+  {
+    "objectID": "about.html#other-tools",
+    "href": "about.html#other-tools",
+    "title": "About",
+    "section": "Other Tools",
+    "text": "Other Tools\n\nTrifacta, QDS, MS Office Suite"
+  },
+  {
+    "objectID": "about.html#core-expertise",
+    "href": "about.html#core-expertise",
+    "title": "About",
+    "section": "Core Expertise",
+    "text": "Core Expertise\n\nResearch Data Management\nCDISC-SDTM Data Standards\nData Cleaning and Quality Assurance\nStatistical Modeling and Analysis\nData Pipeline Development and Automation\nClinical Trials (All Phases)\nData Governance and GDPR Compliance\nProject Management and SOP Development\nScientific Publishing and Research Dissemination"
   },
   {
     "objectID": "index.html",
@@ -19,54 +75,5 @@
     "title": "Generating data for simulation studies",
     "section": "",
     "text": "Introduction\nSimulation studies are a powerful tool in various fields, including statistics, engineering, and computer science. They involve the creation of virtual experiments to model real-world phenomena. By mimicking complex systems through computational algorithms, researchers can gain valuable insights into the behavior and performance of these systems under different conditions. Simulation studies enable the exploration of scenarios that might be impractical or costly to conduct in a physical setting. This method provides a controlled environment to test hypotheses, evaluate the effectiveness of different strategies, and assess the robustness of models. Through the analysis of simulated data, researchers can make informed decisions, refine their models, and ultimately enhance our understanding of intricate, dynamic processes in a wide range of disciplines.\n\n#Loading Libraries\nlibs&lt;-c(\"stringr\",\"haven\",\"readxl\",\"splitstackshape\",\"dplyr\",\"tidyr\",\"foreign\",\"data.table\",\"ggplot2\",\n        \"pwr\",\"pacman\",\"flextable\")\nfor (lib in libs) {\n  if(!require(lib,character.only = T)) {\n    install.packages(lib,dependencies = T) }\n  #update.packages(lib)\n  library(lib,character.only = T) }\n\n\n\nExample 1 - Randomization\nIn this illustration, we create a function called “assign_recipients” designed for allocating participants to specific Study arms. This scenario is particularly applicable in clinical trial studies where participants are randomly assigned to various treatment groups. In our instance, participants are randomized into three distinct arms: A, B, and C. The function provides researchers the flexibility to specify the allocation proportions for each study arm. Additionally, it ensures that the total distribution sums up to 100%.\n\n#Clearing environment\nrm(list = ls())\n\n#Beginning of function\nassign_recipients &lt;- function(namelist,distribution)\n  { \n  \n  N &lt;-length(namelist)\n  lisnm&lt;-data.frame(namelist)\n  \n  if(sum(distribution)==1)\n    {\n  list&lt;-c(rep(\"A\",round(distribution[1]*N)),rep(\"B\",round(distribution[2]*N)),rep(\"C\",round(distribution[3]*N)))\n  \n  if(N%%2==1)\n    {\n    \n    lisnm$Config&lt;-sample(x=list,size=N)\n    } \n  else \n    {\n      lisnm$Config&lt;-sample(x=list,size=N,replace = TRUE)\n    }\n  \n   print(lisnm)\n   \n  }\n  else {\n    \n    print(\"Check distribution: Not summing up to 1\")\n    \n  }\n}\n\n#End of function\n\n\n\nFunction Performance\nWe assess the function’s performance by providing varied names and distributing them with a breakdown of 20% for arm A, 30% for arm B, and 50% for arm C.\n\n#######Test cases\n#Setting seed \nset.seed(202201)\n\n#Test names\nnames&lt;-c(\"Mathew\",\"Ian\",\"Magdaline\",\"Rose\",\"Bella\",\"Rahima\",\"Michael\",\"Mark\",\n         \"Violet\",\"Margaret\",\"John\",\"Milly\",\"Ken\")\n\n#Target distribution\ntarget_distribution &lt;-c(.20,.30,.50)\n\n#Output assignment\nassign_recipients(names,target_distribution)\n\n    namelist Config\n1     Mathew      A\n2        Ian      A\n3  Magdaline      B\n4       Rose      C\n5      Bella      B\n6     Rahima      C\n7    Michael      C\n8       Mark      C\n9     Violet      B\n10  Margaret      C\n11      John      B\n12     Milly      C\n13       Ken      A\n\n\n\n\nExample 2 - Linear model\nIn the second example, our aim is to create a dataset of 1000 data points for the dependent variable, x, within the range of 1 to 2. Subsequently, we will compute corresponding values for the independent variable, y, and generate a graphical representation of the relationship between y and x.\n\n#Number samples\nn&lt;-1000\n\n#Setting up simulation data\ndata&lt;-data.frame(no=1:n,x=NA)\n\nfor (i in 1:n) {\n  \n  #Generating x values\ndata$x[i]&lt;-runif(n,min = 1,max = 2)\n\n  #Generating y values\ndata$y[i]&lt;-2 +(-0.95)*data$x[i]+rnorm(1,sd=0.5)\n\n}\n\n\n#Plot of simulation data\nggplot(data,aes(x=x,y=y)) + geom_point(color=\"steelblue\") + \n  labs(title = \"Plot of simulation data\",x= \"x values\",y =\"y values\") +\n  theme(axis.title=element_text(size=15),\nplot.title = element_text(hjust = 0.5),axis.text = element_text(size=15))"
-  },
-  {
-    "objectID": "posts/post-with-code/index.html",
-    "href": "posts/post-with-code/index.html",
-    "title": "Post With Code",
-    "section": "",
-    "text": "This is a post with executable code.\n\n1 + 1\n\n[1] 2\n\n\nHivyo ndio kunaendanga"
-  },
-  {
-    "objectID": "posts/welcome/index.html",
-    "href": "posts/welcome/index.html",
-    "title": "Welcome To My Blog",
-    "section": "",
-    "text": "This is the first post in a Quarto blog. Welcome!\n\nSince this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
-  },
-  {
-    "objectID": "about.html#bio",
-    "href": "about.html#bio",
-    "title": "About",
-    "section": "",
-    "text": "My name is Tony Henry Oduor, I hail from the beautiful landscapes of Kenya, East Africa.\nI have a wealth of experience managing and analysing healthcare data for decision-making.\nI’m passionate about reproducible research, automating data products, statistical computing, and data visualization."
-  },
-  {
-    "objectID": "posts/generating-simulation-data/index.html#introduction",
-    "href": "posts/generating-simulation-data/index.html#introduction",
-    "title": "Generating data for simulation studies",
-    "section": "",
-    "text": "Simulation studies are a powerful tool in various fields, including statistics, engineering, and computer science. They involve the creation of virtual experiments to model real-world phenomena. By mimicking complex systems through computational algorithms, researchers can gain valuable insights into the behavior and performance of these systems under different conditions. Simulation studies enable the exploration of scenarios that might be impractical or costly to conduct in a physical setting. This method provides a controlled environment to test hypotheses, evaluate the effectiveness of different strategies, and assess the robustness of models. Through the analysis of simulated data, researchers can make informed decisions, refine their models, and ultimately enhance our understanding of intricate, dynamic processes in a wide range of disciplines."
-  },
-  {
-    "objectID": "posts/generating-simulation-data/index.html#example-1",
-    "href": "posts/generating-simulation-data/index.html#example-1",
-    "title": "Generating data for simulation studies",
-    "section": "Example 1",
-    "text": "Example 1\nIn this illustration, we create a function called “assign_recipients” designed for allocating participants to specific Study arms. This scenario is particularly applicable in clinical trial studies where participants are randomly assigned to various treatment groups. In our instance, participants are randomized into three distinct arms: A, B, and C. The function provides researchers the flexibility to specify the allocation proportions for each study arm.\n\n#Clearing environment\nrm(list = ls())\n\n#Beginning of function\nassign_recipients &lt;- function(namelist,distribution)\n  { \n  \n  N &lt;-length(namelist)\n  lisnm&lt;-data.frame(namelist)\n  \n  if(sum(distribution)==1)\n    {\n  list&lt;-c(rep(\"A\",round(distribution[1]*N)),rep(\"B\",round(distribution[2]*N)),rep(\"C\",round(distribution[3]*N)))\n  \n  if(N%%2==1)\n    {\n    \n    lisnm$Config&lt;-sample(x=list,size=N)\n    } \n  else \n    {\n      lisnm$Config&lt;-sample(x=list,size=N,replace = TRUE)\n    }\n  \n   print(lisnm)\n   \n  }\n  else {\n    \n    print(\"Check distribution: Not summing up to 1\")\n    \n  }\n}\n\n#End of function"
-  },
-  {
-    "objectID": "posts/generating-simulation-data/index.html#example-1---randomization",
-    "href": "posts/generating-simulation-data/index.html#example-1---randomization",
-    "title": "Generating data for simulation studies",
-    "section": "Example 1 - Randomization",
-    "text": "Example 1 - Randomization\nIn this illustration, we create a function called “assign_recipients” designed for allocating participants to specific Study arms. This scenario is particularly applicable in clinical trial studies where participants are randomly assigned to various treatment groups. In our instance, participants are randomized into three distinct arms: A, B, and C. The function provides researchers the flexibility to specify the allocation proportions for each study arm.\n\n#Clearing environment\nrm(list = ls())\n\n#Beginning of function\nassign_recipients &lt;- function(namelist,distribution)\n  { \n  \n  N &lt;-length(namelist)\n  lisnm&lt;-data.frame(namelist)\n  \n  if(sum(distribution)==1)\n    {\n  list&lt;-c(rep(\"A\",round(distribution[1]*N)),rep(\"B\",round(distribution[2]*N)),rep(\"C\",round(distribution[3]*N)))\n  \n  if(N%%2==1)\n    {\n    \n    lisnm$Config&lt;-sample(x=list,size=N)\n    } \n  else \n    {\n      lisnm$Config&lt;-sample(x=list,size=N,replace = TRUE)\n    }\n  \n   print(lisnm)\n   \n  }\n  else {\n    \n    print(\"Check distribution: Not summing up to 1\")\n    \n  }\n}\n\n#End of function"
-  },
-  {
-    "objectID": "about.html#education",
-    "href": "about.html#education",
-    "title": "About",
-    "section": "Education",
-    "text": "Education\n\nMSc. Statistics and Data Science: Biostatistics - Hasselt University\nBSc. Applied Statistics with Computing - University of Eldoret"
   }
 ]
